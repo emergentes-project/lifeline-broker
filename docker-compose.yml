@@ -1,0 +1,10 @@
+services:
+  artemis:
+    image: apache/activemq-artemis:2.40.0
+    container_name: lifeline-broker
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    environment:
+      ARTEMIS_USER: admin
+      ARTEMIS_PASSWORD: admin
