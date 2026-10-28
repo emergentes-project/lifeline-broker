@@ -1,0 +1,4 @@
+instance/data/
+instance/log/
+instance/tmp/
+instance/lock/

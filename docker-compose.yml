@@ -8,3 +8,5 @@ services:
     environment:
       ARTEMIS_USER: admin
       ARTEMIS_PASSWORD: admin
+    volumes:
+      - ./instance:/var/lib/artemis-instance
