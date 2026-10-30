@@ -1,0 +1,21 @@
+services:
+  artemis:
+    image: apache/activemq-artemis:2.40.0
+    container_name: lifeline-broker-azure
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:61616:61616"
+      - "127.0.0.1:8161:8161"
+      - "61617:61617"
+    environment:
+      ARTEMIS_USER: ${ARTEMIS_USER:?Configure ARTEMIS_USER in .env}
+      ARTEMIS_PASSWORD: ${ARTEMIS_PASSWORD:?Configure ARTEMIS_PASSWORD in .env}
+      ANONYMOUS_LOGIN: "false"
+    volumes:
+      - ./instance:/var/lib/artemis-instance
+      - ./tls:/var/lib/artemis-instance/tls:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
